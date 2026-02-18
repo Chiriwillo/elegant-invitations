@@ -47,6 +47,17 @@ const HeroSection = ({ data }: Props) => {
           {data.nombre_festejada}
         </motion.h1>
 
+        {data.presentada_por && (
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="text-primary-foreground/80 text-base font-sans mb-6"
+          >
+            La presenta ante la sociedad: <span className="font-semibold">{data.presentada_por}</span>
+          </motion.p>
+        )}
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
