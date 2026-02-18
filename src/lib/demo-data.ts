@@ -28,6 +28,7 @@ export interface InvitationData {
   slug: string;
   nombre_festejada: string;
   subtitulo: string;
+  presentada_por: string;
   fecha_evento: string;
   imagen_portada: string;
   musica_url: string;
@@ -44,24 +45,25 @@ export interface InvitationData {
 export const demoInvitation: InvitationData = {
   id: "demo-001",
   slug: "demo",
-  nombre_festejada: "Valentina García",
+  nombre_festejada: "Xiomara Nicole García Cerda",
   subtitulo: "Mis XV Años",
-  fecha_evento: "2026-06-14T18:00:00-06:00",
+  presentada_por: "Mary López Martinez",
+  fecha_evento: "2025-02-28T18:00:00-06:00",
   imagen_portada: heroImage,
   musica_url: "",
   ceremonia: {
     nombre: "Misa de Acción de Gracias",
-    hora: "18:00 hrs",
-    direccion: "Parroquia de San José, Av. Juárez 120, Col. Centro, Guadalajara, Jal.",
-    maps_url: "https://maps.google.com/?q=Parroquia+de+San+Jose+Guadalajara",
+    hora: "6:00 pm",
+    direccion: "Parroquia San Alfonso María de Ligorio, Col. Nueva Madero",
+    maps_url: "https://maps.google.com/?q=Parroquia+San+Alfonso+Maria+de+Ligorio+Nueva+Madero",
   },
   recepcion: {
-    nombre: "Recepción y Fiesta",
-    hora: "20:00 hrs",
-    direccion: "Salón La Hacienda, Blvd. Puerta de Hierro 4965, Zapopan, Jal.",
-    maps_url: "https://maps.google.com/?q=Salon+La+Hacienda+Zapopan",
+    nombre: "Recepción",
+    hora: "8:00 pm",
+    direccion: "Casino Romano, Av. Aztlán #7301, Valle de Santa Lucía",
+    maps_url: "https://maps.google.com/?q=Casino+Romano+Av+Aztlan+7301+Valle+de+Santa+Lucia",
   },
-  dress_code: "Formal / Elegante — Colores sugeridos: rosa, dorado, champagne. Evitar blanco.",
+  dress_code: "Formal — Se les invita cordialmente a no vestir de color rojo.",
   regalos: [
     {
       titulo: "Mesa de regalos Amazon",
@@ -78,10 +80,10 @@ export const demoInvitation: InvitationData = {
     banco: "BBVA México",
     cuenta: "1234 5678 9012",
     clabe: "012320001234567890",
-    beneficiario: "María García López",
+    beneficiario: "Mary López Martinez",
   },
   galeria: [gallery1, gallery2, gallery3],
-  whatsapp_numero: "523312345678",
+  whatsapp_numero: "528127634836",
   mensaje_whatsapp_template:
-    "¡Hola! Soy {nombre} y quiero confirmar mi asistencia a los XV de Valentina. Asistencia: {asistencia}. Personas: {cantidad}.",
+    "¡Hola! Soy {nombre} y quiero confirmar mi asistencia a los XV de Xiomara Nicole. Asistencia: {asistencia}. Personas: {cantidad}.",
 };
