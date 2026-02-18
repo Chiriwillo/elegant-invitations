@@ -48,7 +48,7 @@ export const demoInvitation: InvitationData = {
   nombre_festejada: "Xiomara Nicole García Cerda",
   subtitulo: "Mis XV Años",
   presentada_por: "Mary López Martinez",
-  fecha_evento: "2025-02-28T18:00:00-06:00",
+  fecha_evento: "2026-02-28T18:00:00-06:00",
   imagen_portada: heroImage,
   musica_url: "",
   ceremonia: {
