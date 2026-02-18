@@ -18,15 +18,15 @@ const GallerySection = ({ images }: Props) => {
   return (
     <>
       <OrnamentDivider />
-      <AnimatedSection className="py-12 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-10">Galería</h2>
+      <AnimatedSection className="py-8 md:py-12 px-4 md:px-6 text-center">
+        <h2 className="text-2xl md:text-4xl font-serif text-foreground mb-8 md:mb-10">Galería</h2>
 
-        <div className="relative max-w-2xl mx-auto">
-          <div className="aspect-[4/3] overflow-hidden rounded-lg">
+        <div className="relative w-full max-w-4xl mx-auto">
+          <div className="w-full bg-black rounded-lg overflow-hidden shadow-lg">
             <img
               src={images[current]}
               alt={`Galería ${current + 1}`}
-              className="w-full h-full object-cover transition-opacity duration-500"
+              className="w-full h-auto object-contain transition-opacity duration-500"
               loading="lazy"
             />
           </div>
@@ -35,21 +35,21 @@ const GallerySection = ({ images }: Props) => {
             <>
               <button
                 onClick={prev}
-                className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-sm text-primary-foreground flex items-center justify-center hover:bg-foreground/40 transition-colors"
+                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-foreground/30 backdrop-blur-sm text-primary-foreground flex items-center justify-center hover:bg-foreground/50 transition-colors z-10"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
               </button>
               <button
                 onClick={next}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-foreground/20 backdrop-blur-sm text-primary-foreground flex items-center justify-center hover:bg-foreground/40 transition-colors"
+                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-foreground/30 backdrop-blur-sm text-primary-foreground flex items-center justify-center hover:bg-foreground/50 transition-colors z-10"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
               </button>
             </>
           )}
 
           {/* Dots */}
-          <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-center gap-2 mt-4 md:mt-6 flex-wrap">
             {images.map((_, i) => (
               <button
                 key={i}
@@ -60,6 +60,11 @@ const GallerySection = ({ images }: Props) => {
               />
             ))}
           </div>
+
+          {/* Counter */}
+          <p className="text-sm text-muted-foreground mt-3 md:mt-4">
+            {current + 1} / {images.length}
+          </p>
         </div>
       </AnimatedSection>
     </>

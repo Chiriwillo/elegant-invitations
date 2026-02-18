@@ -112,33 +112,33 @@ const RsvpSection = ({
   return (
     <>
       <OrnamentDivider />
-      <AnimatedSection className="py-12 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-4">
+      <AnimatedSection className="py-8 md:py-12 px-4 md:px-6 text-center">
+        <h2 className="text-2xl md:text-4xl font-serif text-foreground mb-4">
           Confirma tu asistencia
         </h2>
-        <p className="font-sans text-muted-foreground mb-10 max-w-md mx-auto">
+        <p className="font-sans text-sm md:text-base text-muted-foreground mb-8 md:mb-10 max-w-md mx-auto">
           Espero contar con tu presencia en este día tan especial.
         </p>
 
         {submitted ? (
-          <div className="max-w-md mx-auto bg-card border border-border rounded-lg p-8">
-            <Check className="w-12 h-12 text-primary mx-auto mb-4" />
-            <h3 className="font-serif text-xl text-foreground mb-2">¡Confirmación recibida!</h3>
-            <p className="font-sans text-sm text-muted-foreground">Gracias por confirmar. ¡Te esperamos!</p>
+          <div className="max-w-md mx-auto bg-card border border-border rounded-lg p-6 md:p-8">
+            <Check className="w-10 h-10 md:w-12 md:h-12 text-primary mx-auto mb-4" />
+            <h3 className="font-serif text-lg md:text-xl text-foreground mb-2">¡Confirmación recibida!</h3>
+            <p className="font-sans text-xs md:text-sm text-muted-foreground">Gracias por confirmar. ¡Te esperamos!</p>
           </div>
         ) : (
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="max-w-md mx-auto bg-card border border-border rounded-lg p-8 text-left space-y-5"
+            className="max-w-md mx-auto bg-card border border-border rounded-lg p-6 md:p-8 text-left space-y-5"
           >
             {/* Nombre */}
             <div>
-              <label className="block text-sm font-sans font-medium text-foreground mb-1.5">
+              <label className="block text-xs md:text-sm font-sans font-medium text-foreground mb-1.5">
                 Tu nombre *
               </label>
               <input
                 {...register("nombre")}
-                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-xs md:text-sm font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 placeholder="Nombre completo"
               />
               {errors.nombre && (
@@ -148,17 +148,17 @@ const RsvpSection = ({
 
             {/* Asistencia */}
             <div>
-              <label className="block text-sm font-sans font-medium text-foreground mb-1.5">
+              <label className="block text-xs md:text-sm font-sans font-medium text-foreground mb-1.5">
                 ¿Asistirás? *
               </label>
-              <div className="flex gap-4">
+              <div className="flex gap-2 md:gap-4">
                 {[
                   { value: "si" as const, label: "Sí, asistiré" },
                   { value: "no" as const, label: "No podré asistir" },
                 ].map((opt) => (
                   <label
                     key={opt.value}
-                    className={`flex-1 text-center border rounded-md py-2 px-3 text-sm font-sans cursor-pointer transition-colors ${
+                    className={`flex-1 text-center border rounded-md py-2 px-2 md:px-3 text-xs md:text-sm font-sans cursor-pointer transition-colors ${
                       asistencia === opt.value
                         ? "border-primary bg-primary/10 text-foreground"
                         : "border-input text-muted-foreground hover:border-primary/50"
@@ -179,7 +179,7 @@ const RsvpSection = ({
             {/* Cantidad */}
             {asistencia === "si" && (
               <div>
-                <label className="block text-sm font-sans font-medium text-foreground mb-1.5">
+                <label className="block text-xs md:text-sm font-sans font-medium text-foreground mb-1.5">
                   Número de invitados
                 </label>
                 <input
@@ -187,32 +187,32 @@ const RsvpSection = ({
                   {...register("cantidad", { valueAsNumber: true })}
                   min={1}
                   max={10}
-                  className="w-20 rounded-md border border-input bg-background px-3 py-2 text-sm font-sans text-foreground text-center focus:outline-none focus:ring-2 focus:ring-ring"
+                  className="w-20 rounded-md border border-input bg-background px-3 py-2 text-xs md:text-sm font-sans text-foreground text-center focus:outline-none focus:ring-2 focus:ring-ring"
                 />
               </div>
             )}
 
             {/* Teléfono */}
             <div>
-              <label className="block text-sm font-sans font-medium text-foreground mb-1.5">
+              <label className="block text-xs md:text-sm font-sans font-medium text-foreground mb-1.5">
                 WhatsApp (opcional)
               </label>
               <input
                 {...register("telefono")}
-                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-xs md:text-sm font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 placeholder="10 dígitos"
               />
             </div>
 
             {/* Mensaje */}
             <div>
-              <label className="block text-sm font-sans font-medium text-foreground mb-1.5">
+              <label className="block text-xs md:text-sm font-sans font-medium text-foreground mb-1.5">
                 Mensaje (opcional)
               </label>
               <textarea
                 {...register("mensaje")}
                 rows={3}
-                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-xs md:text-sm font-sans text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                 placeholder="Escribe un mensaje para la festejada..."
               />
             </div>
@@ -220,7 +220,7 @@ const RsvpSection = ({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-md bg-primary text-primary-foreground py-2.5 text-sm font-sans font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full rounded-md bg-primary text-primary-foreground py-2.5 text-xs md:text-sm font-sans font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
               Confirmar asistencia
@@ -229,14 +229,14 @@ const RsvpSection = ({
         )}
 
         {/* Extra buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 mt-6 md:mt-8">
           {whatsapp && (
             <button
               onClick={openWhatsApp}
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-4 py-2 text-sm font-sans text-foreground hover:bg-muted transition-colors"
+              className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 md:px-4 py-2 text-xs md:text-sm font-sans text-foreground hover:bg-muted transition-colors"
             >
               <MessageCircle className="w-4 h-4 text-primary" />
-              Confirmar por WhatsApp
+              WhatsApp
             </button>
           )}
           <button
@@ -248,14 +248,14 @@ const RsvpSection = ({
                 recepcionDireccion
               )
             }
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-4 py-2 text-sm font-sans text-foreground hover:bg-muted transition-colors"
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 md:px-4 py-2 text-xs md:text-sm font-sans text-foreground hover:bg-muted transition-colors"
           >
             <CalendarPlus className="w-4 h-4 text-primary" />
-            Guardar en calendario
+            Calendario
           </button>
           <button
             onClick={shareInvitation}
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-4 py-2 text-sm font-sans text-foreground hover:bg-muted transition-colors"
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 md:px-4 py-2 text-xs md:text-sm font-sans text-foreground hover:bg-muted transition-colors"
           >
             <Share2 className="w-4 h-4 text-primary" />
             Compartir
