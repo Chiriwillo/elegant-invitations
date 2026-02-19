@@ -20,9 +20,9 @@ const HeroSection = ({ data }: Props) => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
+      {/* Background image - optimized for mobile with contain to show full image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed md:bg-scroll"
+        className="absolute inset-0 bg-contain bg-center bg-no-repeat bg-fixed md:bg-scroll md:bg-cover"
         style={{ backgroundImage: `url(${data.imagen_portada})` }}
       />
       {/* Gradient overlay - lighter and more transparent for better image visibility */}
