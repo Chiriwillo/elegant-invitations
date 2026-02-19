@@ -46,7 +46,10 @@ export default {
   				'Liberation Mono',
   				'Courier New',
   				'monospace'
-  			]
+  			],
+  			playfair: ['Playfair Display', 'ui-serif', 'Georgia', 'serif'],
+  			cormorant: ['Cormorant Garamond', 'ui-serif', 'Georgia', 'serif'],
+  			montserrat: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif']
   		},
   		colors: {
   			border: 'hsl(var(--border))',

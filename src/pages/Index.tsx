@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -7,14 +7,19 @@ const Index = () => {
   const [showImage, setShowImage] = useState(true);
   const navigate = useNavigate();
 
-  const handleButtonClick = () => {
+  const handleButtonClick = async () => {
+    setShowImage(false);
+
     if (audioRef.current) {
-      audioRef.current.play().catch(() => {
-        console.log("Audio play failed");
-      });
+      try {
+        audioRef.current.currentTime = 0;
+        await audioRef.current.play();
+      } catch (error) {
+        console.log("Audio play failed:", error);
+      }
     }
+
     setTimeout(() => {
-      setShowImage(false);
       navigate("/i/demo");
     }, 500);
   };
@@ -48,89 +53,115 @@ const Index = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="relative z-10 text-center max-w-2xl px-6 md:px-8"
+        className="relative z-10 text-center max-w-3xl px-6 md:px-8"
       >
-        {/* Decorative line */}
+        {/* Decorative flourish top */}
         <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="h-1 w-20 bg-gradient-to-r from-rose-400 via-red-400 to-rose-400 mx-auto mb-8 rounded-full"
-        />
-
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-sm md:text-base font-sans tracking-widest uppercase text-rose-600 font-semibold mb-4"
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="mb-8 text-4xl tracking-widest text-rose-400"
         >
-          Te Invitamos a Celebrar
-        </motion.h2>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 1 }}
-          className="text-6xl md:text-8xl font-serif text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-rose-500 to-red-600 font-bold mb-6 leading-tight"
-        >
-          Mis 15 Años
-        </motion.h1>
+          ✦ ✦ ✦
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-xs md:text-sm font-semibold tracking-[0.3em] uppercase text-rose-600 mb-6 font-montserrat"
+        >
+          Cordialmente invitamos
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5, duration: 1.2 }}
+          className="text-7xl md:text-9xl mb-4 leading-none font-playfair font-light"
+          style={{
+            background: "linear-gradient(135deg, #dc2626 0%, #be123c 50%, #e11d48 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          Mis 15 Años
+        </motion.h1>
+
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="text-xl md:text-2xl font-serif text-gray-700 mb-8 font-light italic"
+          className="h-1 w-32 bg-gradient-to-r from-rose-300 via-red-400 to-rose-300 mx-auto mb-8 rounded-full"
+        />
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+          className="text-2xl md:text-4xl font-cormorant font-light italic text-rose-900 mb-2 leading-relaxed"
         >
           Eres uno de los afortunados!
         </motion.p>
 
-        {/* Decorative line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-          className="h-px w-24 bg-gradient-to-r from-transparent via-rose-400 to-transparent mx-auto mb-8"
-        />
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1, duration: 0.8 }}
+          className="text-sm md:text-base font-montserrat tracking-widest text-gray-600 mb-12 uppercase"
+        >
+          Celebra conmigo este momento especial
+        </motion.p>
 
         <motion.button
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
+          transition={{ delay: 1.3, duration: 0.8 }}
           onClick={handleButtonClick}
-          className="relative group inline-flex items-center justify-center px-8 md:px-12 py-4 md:py-5 text-white font-serif text-lg md:text-xl font-semibold overflow-hidden rounded-full transition-all duration-300 hover:scale-105 active:scale-95"
+          className="relative group inline-flex items-center justify-center px-10 md:px-16 py-5 md:py-6 text-white font-montserrat text-base md:text-lg font-semibold overflow-hidden transition-all duration-300 hover:scale-110 active:scale-95"
+          style={{
+            borderRadius: "50px",
+            letterSpacing: "0.05em",
+          }}
         >
           {/* Gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-rose-500 via-red-500 to-rose-500 group-hover:from-rose-600 group-hover:via-red-600 group-hover:to-rose-600 transition-all duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-rose-500 to-red-500 group-hover:from-red-600 group-hover:via-rose-600 group-hover:to-red-600 transition-all duration-500 rounded-full" />
+
+          {/* Shadow glow effect */}
+          <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-2xl shadow-red-500/50" />
 
           {/* Shine effect */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
           </div>
 
           {/* Text */}
           <span className="relative z-10">Abre tu invitación</span>
         </motion.button>
 
-        {/* Decorative flourish */}
+        {/* Decorative flourish bottom */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="mt-12 flex justify-center gap-2 text-rose-300"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
+          className="mt-16 text-3xl tracking-widest text-rose-300"
         >
-          <span className="text-2xl">✦</span>
-          <span className="text-2xl">✦</span>
-          <span className="text-2xl">✦</span>
+          ✦ ✦ ✦
         </motion.div>
       </motion.div>
 
       {/* Audio element */}
       <audio
         ref={audioRef}
-        src="https://raw.githubusercontent.com/Chiriwillo/elegant-invitations/main/Photograph.mp3"
         crossOrigin="anonymous"
-      />
+        preload="auto"
+      >
+        <source
+          src="https://raw.githubusercontent.com/Chiriwillo/elegant-invitations/main/Photograph.mp3"
+          type="audio/mpeg"
+        />
+      </audio>
     </div>
   );
 };
